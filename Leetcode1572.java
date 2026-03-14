@@ -1,25 +1,26 @@
-package Leetcode2;
+package Leetcode31;
 
 public class Leetcode1572 {
 	public static void main(String[] args) {
-		int[][] mat= {{1,1,1,1},{1,1,1,1},{1,1,1,1},{1,1,1,1}};
+		int[][] mat = {{5}};
 		int total = 0;
-		for(int i= 0;i<mat.length;i++) {
-			for(int j = 0;j<mat[i].length;j++) {
+		for(int i = 0;i<mat.length;i++) {
+			for(int j = 0;j<mat.length;j++) {
 				if(i == j) {
-					total += mat[i][j];
-				}
-			}
-		}
-		for(int i=mat.length-1;i>-1;i--) {
-			for(int j = 0;j<mat[i].length;j++) {
-				if(i == j) {
-					total += mat[i][j];
+					total +=mat[i][j];
 				}
 			}
 		}
 		if(mat.length%2!=0) {
-			total = total - mat[mat.length/2][mat.length/2];
+		for(int i = 0;i<mat.length;i++){
+			if(i != mat.length/2) {
+			total+=mat[i][Math.abs(i-mat.length)-1];
+			}		
+			}
+		}else {
+			for(int i = 0;i<mat.length;i++){
+				total+=mat[i][Math.abs(i-mat.length)-1];
+				}		
 		}
 		System.out.println(total);
 	}

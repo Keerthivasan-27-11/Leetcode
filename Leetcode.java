@@ -1,24 +1,39 @@
-import java.util.ArrayList;
-import java.util.List;
+package Leetcode31;
 
 public class Leetcode {
-    public static void main(String[] args) {
-        String s1 = "this apple is sweet",s2="this apple is sour";
-        List<String> str1 = new ArrayList<>();
-        List<String> str2 = new ArrayList<>();
-        for(int i = 0;i<s1.length();i++){
-            String s ="";
-            if(s1.substring(i,i+1).equals(" ")){
-                str1.add(s);
-                s="";
-            }
-            else{
-                System.out.println(s);
-                s+=s1.substring(i,i+1);
-            }
-        }
-        for(String ss : str1){
-            System.out.println(ss);
-        }
-    }
+	public static void main(String[] args) {
+		String pattern = "DDD";
+		int n = pattern.length()+1;
+		int[] num = new int[n];
+		for(int i = 0;i<n;i++) {
+			num[i]=i+1;
+		}
+		for(int j = 0;j<n;j++) {
+		for(int i = 0;i<pattern.length();i++) {
+			if(pattern.substring(i,i+1).equals("I")) {
+				if(num[i]<num[i+1]) {
+					
+				}else {
+					int a = num[i];
+					num[i]=num[i+1];
+					num[i+1]=a;
+				}
+			}
+			if(pattern.substring(i,i+1).equals("D")) {
+				if(num[i]>num[i+1]) {
+					
+				}else {
+					int a = num[i+1];
+					num[i+1]=num[i];
+					num[i]=a;
+				}
+			}
+			
+		}}
+		String res = "";
+		for(int i= 0;i<n;i++) {
+			System.out.println(num[i]);
+			res+=Integer.toString(num[i]);
+		}
+	}
 }
