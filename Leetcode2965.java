@@ -1,46 +1,36 @@
-package Leetcode2;
-import java.util.*;
+package Leetcode4;
+
 public class Leetcode2965 {
+
 	public static void main(String[] args) {
-		int[][] grid= {{9,1,7},{8,9,2},{3,4,6}};
-		int[] r = new int[grid.length*grid.length];
-		int count= 0;
-		HashSet<Integer> h = new HashSet<>();
-		for(int i = 0;i<grid.length;i++) {
-			for(int j = 0;j<grid[i].length;j++) {
-				r[count++]=grid[i][j];
+		// TODO Auto-generated method stub
+		int[][] grid = {{1,3},{2,2}};
+		int[] g = new int[grid.length*grid.length];
+		int count = 0;
+		for(Integer i = 0;i<grid.length;i++) {
+			for(Integer j = 0;j<grid.length;j++) {
+				g[count++]=grid[i][j];
 			}
 		}
-		for(int i = 0;i<r.length;i++) {
-			int a = 0;
-			for(int j = 0;j<r.length;j++) {
-				if(r[i]==r[j]) {
-					a++;
+		int[] res = new int[2];
+		int a = 0, b = 0;
+		int n = grid.length*grid.length;
+		for(int i =1;i<=n;i++) {
+			int c = 0;
+			for(int j = 0;j<g.length;j++) {
+				if(g[j] == i) {
+					c++;
 				}
 			}
-			if(a==2) {
-				h.add(r[i]);
+			if(c == 0) {
+				a= i;
 			}
-		}
-		for(int i = 0;i<r.length;i++) {
-			int a = 0,b= 0;
-			for(int j = 1;j<=r.length;j++) {
-				if(i ==j) {
-					continue;
-				}
-				if(r[i]==j) {
-					a++;
-				}
-				else {
-					b = j;
-				}
+			if(c == 2) {
+				b = i;
 			}
-			if(a==0) {
-				h.add(b);
-			}
-		}
-		for(Integer i : h) {
-			System.out.println(i);
-		}
+		}res[0]=a;
+		res[1]=b;
+		System.out.println(a+" "+b);
 	}
+
 }
