@@ -1,39 +1,26 @@
-package Leetcode31;
+package Leetcode5;
 
 public class Leetcode {
 	public static void main(String[] args) {
-		String pattern = "DDD";
-		int n = pattern.length()+1;
-		int[] num = new int[n];
-		for(int i = 0;i<n;i++) {
-			num[i]=i+1;
+		int x = -120;
+		if(x>0) {
+			StringBuffer sb = new StringBuffer(Integer.toString(x));
+			sb.reverse();
+			x = Integer.parseInt(sb.toString());
 		}
-		for(int j = 0;j<n;j++) {
-		for(int i = 0;i<pattern.length();i++) {
-			if(pattern.substring(i,i+1).equals("I")) {
-				if(num[i]<num[i+1]) {
-					
-				}else {
-					int a = num[i];
-					num[i]=num[i+1];
-					num[i+1]=a;
-				}
-			}
-			if(pattern.substring(i,i+1).equals("D")) {
-				if(num[i]>num[i+1]) {
-					
-				}else {
-					int a = num[i+1];
-					num[i+1]=num[i];
-					num[i]=a;
-				}
-			}
-			
-		}}
-		String res = "";
-		for(int i= 0;i<n;i++) {
-			System.out.println(num[i]);
-			res+=Integer.toString(num[i]);
+		else {
+			String res = Integer.toString(x);
+			StringBuffer sb = new StringBuffer(res.substring(1,res.length()));
+			sb.reverse();
+			x = Integer.parseInt(sb.toString());
+			x*=-1;
 		}
+		System.out.println(x);
+		if(-(Math.pow(2,31))>=x && x<=Math.pow(2,31)-1) {
+		}
+		else {
+			x = 0;
+		}
+		System.out.println(x);
 	}
 }

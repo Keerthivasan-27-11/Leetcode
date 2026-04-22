@@ -1,34 +1,40 @@
-package Leetcode2;
+package Leetcode5;
+
+import java.util.*;
 
 public class Leetcode2357 {
-
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int[] nums= {1,5,0,3,5};
-        int count=0,n=1;
-        for(int i=0;i<nums.length;i++){
-            int a=0;
-            for(int j=0;j<nums.length;j++){
-                if(nums[j]==0){
-                    a++;
-                }
-            }
-            if(a==nums.length){
-                break;
-            }else{
-                count++;
-            for(int k=0;k<nums.length;k++){
-                if(nums[k]==0){
-                    
-                }
-                
-                else{
-                    nums[k]=nums[k]-n;
-                }
-            }
-            }
-        }
-        System.out.println(count);
+		int[] nums = {0};
+		int min = 100, total = 0, j = 0, a = 0;
+		while (a != 1) {
+			j = 0;
+			min = 100;
+			for (int i = 0; i < nums.length; i++) {
+				if (nums[i] == 0) {
+					j++;
+				}
+			}
+			if (j == nums.length) {
+				a++;
+				break;
+			} else {
+				for (int i = 0; i < nums.length; i++) {
+					if (nums[i] > 0) {
+						min = Math.min(min, nums[i]);
+					}
+				}
+				for (int i = 0; i < nums.length; i++) {
+					if (nums[i] > 0) {
+						nums[i] = nums[i] - min;
+					}
+				}
+				for (int i = 0; i < nums.length; i++) {
+					System.out.print(nums[i]);
+				}
+				System.out.println();
+				total ++;
+			}
+		}
+		System.out.println(total);
 	}
-
 }

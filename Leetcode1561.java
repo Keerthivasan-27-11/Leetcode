@@ -1,30 +1,26 @@
-package Leetcode4;
+package Leetcode5;
 
 import java.util.*;
 
 public class Leetcode1561 {
 	public static void main(String[] args) {
-		int[] nums= {0,1,1,3};int maximumBit = 2;
-		int n = Math.powExact(2, maximumBit);
-		int[] res = new int[nums.length];
-		for(int i = 0;i<nums.length;i++) {
+		int[] piles = { 2, 4, 1, 2, 7, 8 };
+		int max = 0, n = piles.length;
+		int j = 0;
+		HashSet<Integer> li = new HashSet<>();
+		do {
 			int a = 0;
-			for(int j = 0;j<nums.length-i;j++) {
-				a^=nums[j];
-				//System.out.print(nums[j]);
-			}
-			//System.out.println();
-			for(int j = 0;j<n;j++) {
-				if((a^j) == n-1) {
-					System.out.println(j);
-					break;
+			for (int i = j; i < j + n; i += 3) {
+				int b = 0,c= 0,d=0;
+				for(int k =i;k<i+3;k++) {
+					System.out.print(piles[k%n]);
+					b = Math.max(piles[k%n], Math.max(c, d));
 				}
+				System.out.print(' ');
 			}
-//			System.out.println();
-		}
-		System.out.println("hello world");
-//		for(int j =0;j<nums.length;j++) {
-//			System.out.println(res[j]);
-//		}
+			System.out.println();
+			j++;
+		} while (j != n);
+		System.out.println(max);
 	}
 }

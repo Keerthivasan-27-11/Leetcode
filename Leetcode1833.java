@@ -1,45 +1,32 @@
-package Leetcode2;
+package Leetcode5;
+
+import java.util.*;
 
 public class Leetcode1833 {
 	public static void main(String[] args) {
-		int[] costs= {7,3,3,6};
-		int coins = 56;
-		for(int i= 0;i<costs.length;i++) {
-			for(int j =0;j<costs.length-1;j++) {
-				if(costs[j]>costs[j+1])
-				{
-					int a = costs[j];
-					costs[j]=costs[j+1];
-					costs[j+1]= a;
+		int[] groupSize = {1,1,1,1};
+		int j = 1,n = groupSize.length,count = 0;
+		List<List<Integer>> li = new ArrayList<>();
+		do {
+			int a = 0,min = 500;
+			for(int i = 0;i<n;i++) {
+				if(groupSize[i]!=-1) {
+				min = Math.min(min, groupSize[i]);
+			}}
+			List<Integer> res = new ArrayList<>();
+			for(int i = 0;i<n;i++) {
+				if(groupSize[i]==min) {
+					groupSize[i]=-1;
+					res.add(i);
+					count ++;
+					a++;}
+				if(a==min) {
+					break;
 				}
+				System.out.println(1);
 			}
-		}
-		int count = 0;
-		for(int i= 0;i<costs.length;i++) {
-			int a = 0,total = 0;
-			for(int j= 0;j<costs.length ;j++) {
-				if(total == coins) {
-					
-				}
-				else if(coins<costs[j]) {
-					
-				}
-				else {
-				total+=costs[j];
-				if(total > coins)
-					{
-					}else {
-						a++;
-					}
-					}
-			}
-			if(a==0) {
-				
-			}
-			else if(count<a) {
-				count = a;
-			}
-		}
-		System.out.println(count);
+			li.add(res);
+		}while(count!=n);
+		System.out.println(li);
 	}
 }
