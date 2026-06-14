@@ -1,26 +1,21 @@
-package Leetcode5;
+package Leetcode6;
 
 public class Leetcode {
 	public static void main(String[] args) {
-		int x = -120;
-		if(x>0) {
-			StringBuffer sb = new StringBuffer(Integer.toString(x));
-			sb.reverse();
-			x = Integer.parseInt(sb.toString());
+		int num1 = 96, num2 = 161;
+		int res = 0;
+		for (int i = num1; i <= num2; i++) {
+			StringBuffer sb = new StringBuffer(Integer.toString(i));
+			for (int j = 1; j < sb.length() - 1; j++) {
+				if (Integer.parseInt(sb.substring(j - 1, j)) > Integer.parseInt(sb.substring(j, j + 1))
+						&& Integer.parseInt(sb.substring(j, j + 1)) < Integer.parseInt(sb.substring(j + 1, j + 2))) {
+					res++;
+				} else if (Integer.parseInt(sb.substring(j - 1, j)) < Integer.parseInt(sb.substring(j, j + 1))
+						&& Integer.parseInt(sb.substring(j, j + 1)) > Integer.parseInt(sb.substring(j + 1, j + 2))) {
+					res++;
+				}
+			}
 		}
-		else {
-			String res = Integer.toString(x);
-			StringBuffer sb = new StringBuffer(res.substring(1,res.length()));
-			sb.reverse();
-			x = Integer.parseInt(sb.toString());
-			x*=-1;
-		}
-		System.out.println(x);
-		if(-(Math.pow(2,31))>=x && x<=Math.pow(2,31)-1) {
-		}
-		else {
-			x = 0;
-		}
-		System.out.println(x);
+		System.out.println(res);
 	}
 }
